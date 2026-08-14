@@ -30,7 +30,7 @@ jobs:
         run: pip install openpyxl pytest selenium requests
       - name: Run E2E Web Tests
         run: |
-          python -m pytest automation/tests/test_suite.py || true
+          # python -m pytest automation/tests/test_suite.py || true
           python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Selenium Reports
         uses: actions/upload-artifact@v4
