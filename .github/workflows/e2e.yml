@@ -1,0 +1,180 @@
+name: E2E Testing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  selenium:
+    name: "🌐 Selenium — Website Tests (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl pytest selenium requests
+      - name: Run E2E Web Tests
+        run: |
+          python -m pytest automation/tests/test_suite.py || true
+          python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Selenium Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: selenium_reports
+          path: |
+            Test Results/Excel/Automation_Test_Report.xlsx
+            Test Results/Excel/Passed_Test_Cases.xlsx
+            Test Results/Excel/Failed_Test_Cases.xlsx
+
+  appium:
+    name: "📱 Appium — Android Tests (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Run Appium Tests
+        run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Appium Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: appium_reports
+          path: Test Results/Excel/Appium_Test_Report.xlsx
+
+  unit:
+    name: "🧪 Unit Tests — API (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Run Unit Tests
+        run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Unit Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: unit_reports
+          path: Test Results/Excel/Unit_Test_Report.xlsx
+
+  validation:
+    name: "✅ Validation Tests (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Run Validation Tests
+        run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Validation Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: validation_reports
+          path: Test Results/Excel/Validation_Test_Report.xlsx
+
+  deployment:
+    name: "🚀 Deployment Status (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Run Deployment Verification
+        run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Deployment Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment_reports
+          path: Test Results/Excel/Deploy_Test_Report.xlsx
+
+  load:
+    name: "📈 Load Testing — Performance (300)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      - name: Run Load Performance Tests
+        run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+      - name: Upload Load Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: load_reports
+          path: Test Results/Excel/Load_Test_Report.xlsx
+
+  compile:
+    name: "📊 Compile Master Report & Deploy"
+    needs: [selenium, appium, unit, validation, deployment, load]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install openpyxl
+      
+      - name: Download all Excel reports
+        uses: actions/download-artifact@v3
+        with:
+          path: downloaded_reports
+
+      - name: Consolidate reports and generate summary
+        run: |
+          mkdir -p "Test Results/Excel"
+          # Copy downloaded files to target folders
+          cp downloaded_reports/selenium_reports/* "Test Results/Excel/" || true
+          cp downloaded_reports/appium_reports/* "Test Results/Excel/" || true
+          cp downloaded_reports/unit_reports/* "Test Results/Excel/" || true
+          cp downloaded_reports/validation_reports/* "Test Results/Excel/" || true
+          cp downloaded_reports/deployment_reports/* "Test Results/Excel/" || true
+          cp downloaded_reports/load_reports/* "Test Results/Excel/" || true
+          
+          # Regenerate final summary report & HTML Dashboards
+          python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
+
+      - name: Setup GitHub Pages Configuration
+        uses: actions/configure-pages@v3
+      - name: Upload Pages HTML Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: './web'
+      - name: Deploy static dashboard to GitHub Pages
+        uses: actions/deploy-pages@v2
+
+      - name: Upload Consolidated E2E Excel Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Consolidated_Test_Excel_Reports
+          path: Test Results/Excel/
+          retention-days: 30
+
+      - name: Publish Summary Panel
+        run: |
+          cat "Test Results/Summary/summary.md" >> $GITHUB_STEP_SUMMARY
