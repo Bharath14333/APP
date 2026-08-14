@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:title="Incident Report Details"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@android:drawable/ic_menu_revert"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Title & Status -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txt_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/txt_details_status"
+                    android:text="Building Fire Incident"
+                    android:textColor="@color/onBackground"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_details_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/status_pending"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="PENDING"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <!-- Metadata Row (Type, Severity) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical">
+                
+                <TextView
+                    android:id="@+id/txt_details_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type: Fire"
+                    android:textColor="@color/medium_gray"
+                    android:textSize="14sp" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  |  "
+                    android:textColor="@color/light_gray" />
+                
+                <TextView
+                    android:id="@+id/txt_details_severity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Severity: Critical"
+                    android:textColor="@color/severity_critical"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Reported: Jun 21, 2026 at 10:14 PM"
+                android:textColor="@color/medium_gray"
+                android:textSize="12sp" />
+
+            <!-- Evidence Image Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_details_image"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp">
+                <ImageView
+                    android:id="@+id/img_details_evidence"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:contentDescription="Evidence Media" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Description Block -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Incident Description"
+                android:textColor="@color/onBackground"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_details_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Smoke is coming out of the third floor windows. Fire alarms are ringing. No ambulance has arrived yet."
+                android:textColor="@color/onSurfaceVariant"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+
+            <!-- Location Block -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Incident Location"
+                android:textColor="@color/onBackground"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_details_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="456 Rescue Way, Safehaven Metro Area (GPS: 40.7128, -74.0060)"
+                android:textColor="@color/onSurfaceVariant"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txt_details_reporter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Reported By: Bharat (Citizen)"
+                android:textColor="@color/medium_gray"
+                android:textSize="13sp" />
+
+            <!-- ADMIN/RESPONDER WORKFLOW PANEL -->
+            <LinearLayout
+                android:id="@+id/layout_admin_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/edit_text_background"
+                android:padding="16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Incident Management Operations"
+                    android:textColor="@color/onBackground"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/edit_text_background"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp"
+                    android:gravity="center_vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change Status: "
+                        android:textColor="@color/medium_gray"/>
+                    <Spinner
+                        android:id="@+id/spinner_manage_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_update_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/security_blue"
+                    android:textColor="@color/white"
+                    android:text="Update Incident Status" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

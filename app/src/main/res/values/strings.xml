@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CrisisSense</string>
+
+    <!-- General/Auth Labels -->
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
+    <string name="title_forgot_password">Forgot Password</string>
+    <string name="title_otp">OTP Verification</string>
+    <string name="title_admin_login">Admin Access</string>
+    
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_send_otp">Send OTP</string>
+    <string name="btn_verify_otp">Verify OTP</string>
+    
+    <string name="hint_name">Full Name</string>
+    <string name="hint_email">Email Address</string>
+    <string name="hint_phone">Phone Number</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_address">Address / City</string>
+    <string name="hint_otp">Enter 6-digit OTP</string>
+
+    <!-- User Roles -->
+    <string name="role_citizen">Citizen</string>
+    <string name="role_volunteer">Volunteer</string>
+    <string name="role_responder">Emergency Responder</string>
+    <string name="role_admin">System Administrator</string>
+    
+    <!-- Onboarding / Intro -->
+    <string name="intro_title_1">Real-time Emergency Reporting</string>
+    <string name="intro_desc_1">Report incidents like accidents, fire, and floods instantly to request assistance.</string>
+    <string name="intro_title_2">AI-Driven Severity Grading</string>
+    <string name="intro_desc_2">Our system automatically routes and scales incident priority for emergency responders.</string>
+    <string name="intro_title_3">Community &amp; Volunteer Support</string>
+    <string name="intro_desc_3">Join hands as a volunteer or responder to manage tasks and coordinate rescue operations.</string>
+    <string name="intro_next">Next</string>
+    <string name="intro_skip">Skip</string>
+    <string name="intro_get_started">Get Started</string>
+
+    <!-- Dashboard -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_alerts">Live Alerts</string>
+    <string name="nav_contacts">Emergency Contacts</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_logout">Logout</string>
+    
+    <!-- Reporting -->
+    <string name="title_report_emergency">Report Emergency</string>
+    <string name="hint_incident_title">Incident Title (e.g. Building Fire)</string>
+    <string name="hint_incident_type">Incident Type</string>
+    <string name="hint_incident_desc">Describe the details of the crisis...</string>
+    <string name="hint_incident_location">Location Address (or GPS Coordinate)</string>
+    <string name="label_severity">Severity Level</string>
+    <string name="btn_save_draft">Save Draft</string>
+    <string name="btn_upload_evidence">Upload Evidence (Photo)</string>
+    
+    <!-- Severity options -->
+    <string name="severity_low_txt">Low - Minor issue</string>
+    <string name="severity_medium_txt">Medium - Assistance needed</string>
+    <string name="severity_high_txt">High - Severe threat</string>
+    <string name="severity_critical_txt">Critical - Life threatening</string>
+
+    <!-- Emergency Contacts -->
+    <string name="contact_police">Police Emergency</string>
+    <string name="contact_police_num">100</string>
+    <string name="contact_fire">Fire Service</string>
+    <string name="contact_fire_num">101</string>
+    <string name="contact_ambulance">Ambulance Services</string>
+    <string name="contact_ambulance_num">102</string>
+    <string name="contact_disaster">Disaster Management</string>
+    <string name="contact_disaster_num">108</string>
+
+    <!-- Settings & Support -->
+    <string name="setting_notifications">Enable Push Notifications</string>
+    <string name="setting_location">Location Services</string>
+    <string name="setting_dark_mode">Dark Mode / Theme</string>
+    <string name="btn_about">About CrisisSense</string>
+    <string name="btn_support">Help &amp; Support</string>
+</resources>

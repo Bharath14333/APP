@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:padding="24dp">
+
+    <!-- Top Toolbar/Header -->
+    <LinearLayout
+        android:id="@+id/sos_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="@color/white"
+            android:contentDescription="Go Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Emergency SOS Dispatcher"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Center SOS Pulse Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CRITICAL EMERGENCY"
+            android:textColor="#FF5252"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:letterSpacing="0.15" />
+
+        <TextView
+            android:id="@+id/txt_sos_instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="Press and hold the button for 3 seconds"
+            android:textColor="#9E9E9E"
+            android:textSize="14sp" />
+
+        <!-- SOS Button Stack -->
+        <FrameLayout
+            android:layout_width="220dp"
+            android:layout_height="220dp">
+
+            <!-- Circular Progress Indicator -->
+            <ProgressBar
+                android:id="@+id/sos_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@android:drawable/progress_horizontal"
+                style="?android:attr/progressBarStyleLarge" />
+
+            <!-- SOS Trigger Button -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_sos_trigger"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="90dp"
+                app:cardBackgroundColor="#FF1744"
+                app:cardElevation="8dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SOS"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_sos_countdown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HOLD"
+                        android:textColor="#E0E0E0"
+                        android:textSize="14sp"
+                        android:layout_marginTop="4dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Bottom SOS Status/Results Container -->
+    <LinearLayout
+        android:id="@+id/layout_sos_triggered"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="#212121"
+            app:cardElevation="4dp"
+            app:strokeColor="#FF5252"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🚨 SOS BROADCAST ACTIVATED"
+                    android:textColor="#FF1744"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_sos_coordinates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GPS: Fetching location..."
+                    android:textColor="#E0E0E0"
+                    android:layout_marginTop="8dp"
+                    android:textSize="13sp"
+                    android:fontFamily="monospace" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Emergency contacts have been notified."
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp" />
+
+                <!-- Quick Assistance Services buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:weightSum="3"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/btn_sos_call_police"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:text="Police"
+                        android:textSize="11sp"
+                        style="@style/Widget.Material3.Button.TonalButton" />
+
+                    <Button
+                        android:id="@+id/btn_sos_call_ambulance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="2dp"
+                        android:text="Medical"
+                        android:textSize="11sp"
+                        style="@style/Widget.Material3.Button.TonalButton" />
+
+                    <Button
+                        android:id="@+id/btn_sos_view_services"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:text="Nearby"
+                        android:textSize="11sp"
+                        style="@style/Widget.Material3.Button" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Custom Header Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:title="Report Emergency"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@android:drawable/ic_menu_revert"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Describe the Situation"
+                android:textColor="@color/onBackground"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide precise details to help emergency services respond quickly."
+                android:textColor="@color/medium_gray"
+                android:textSize="13sp" />
+
+            <!-- Input fields -->
+            <EditText
+                android:id="@+id/edit_incident_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="@string/hint_incident_title"
+                android:inputType="textCapWords"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/onBackground"
+                android:textColorHint="@color/medium_gray"/>
+
+            <!-- Type Selector -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edit_text_background"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Incident Type: "
+                    android:textColor="@color/medium_gray"/>
+                <Spinner
+                    android:id="@+id/spinner_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/edit_incident_desc"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="@string/hint_incident_desc"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textColor="@color/onBackground"
+                android:textColorHint="@color/medium_gray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/edit_incident_location"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="@string/hint_incident_location"
+                    android:inputType="textPostalAddress"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/onBackground"
+                    android:textColorHint="@color/medium_gray"/>
+
+                <ImageButton
+                    android:id="@+id/btn_gps"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/card_gradient_blue"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:tint="@color/white"
+                    android:contentDescription="Get GPS Location"/>
+            </LinearLayout>
+
+            <!-- Severity selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Severity Priority Level"
+                android:textColor="@color/onBackground"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radio_group_severity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/radio_low"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Low"
+                    android:textColor="@color/severity_low"
+                    android:textStyle="bold"
+                    android:buttonTint="@color/severity_low" />
+
+                <RadioButton
+                    android:id="@+id/radio_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Med"
+                    android:textColor="@color/severity_medium"
+                    android:textStyle="bold"
+                    android:buttonTint="@color/severity_medium" />
+
+                <RadioButton
+                    android:id="@+id/radio_high"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="High"
+                    android:textColor="@color/severity_high"
+                    android:textStyle="bold"
+                    android:buttonTint="@color/severity_high" />
+
+                <RadioButton
+                    android:id="@+id/radio_critical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Crit"
+                    android:textColor="@color/severity_critical"
+                    android:textStyle="bold"
+                    android:buttonTint="@color/severity_critical" />
+
+            </RadioGroup>
+
+            <!-- Evidence Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Attach Evidence (Optional)"
+                android:textColor="@color/onBackground"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_attach_evidence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/security_blue"
+                    android:textColor="@color/white"
+                    android:text="Camera / Gallery"
+                    style="@style/Widget.Material3.Button.TonalButton"/>
+
+                <TextView
+                    android:id="@+id/txt_evidence_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="No file selected"
+                    android:textColor="@color/medium_gray"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+            <!-- Actions -->
+            <Button
+                android:id="@+id/btn_submit_report"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_rounded_primary"
+                android:text="Submit Crisis Report"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_save_draft"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/btn_save_draft"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

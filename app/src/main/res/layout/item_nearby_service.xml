@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+
+        <!-- Icon display -->
+        <ImageView
+            android:id="@+id/img_service_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_compass"
+            android:tint="@color/security_blue"
+            android:contentDescription="Service Icon" />
+
+        <!-- Info details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/txt_service_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="City Central Hospital"
+                    android:textColor="@color/onBackground"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="1" />
+
+                <!-- Favorite Toggle Star -->
+                <ImageButton
+                    android:id="@+id/btn_favorite_service"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/btn_star_big_off"
+                    android:contentDescription="Add to Favorites" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_service_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="789 Care Blvd, Safehaven"
+                android:textColor="@color/medium_gray"
+                android:textSize="13sp"
+                android:ellipsize="end"
+                android:maxLines="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:id="@+id/txt_service_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.8 km away"
+                    android:textColor="@color/security_blue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  |  "
+                    android:textColor="@color/light_gray" />
+
+                <TextView
+                    android:id="@+id/txt_service_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ph: 555-9111"
+                    android:textColor="@color/medium_gray"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Actions -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="8dp">
+
+            <!-- Directions Button -->
+            <ImageButton
+                android:id="@+id/btn_directions_service"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/card_gradient_blue"
+                android:src="@android:drawable/ic_menu_compass"
+                android:tint="@color/white"
+                android:contentDescription="Directions" />
+
+            <!-- Call Button -->
+            <ImageButton
+                android:id="@+id/btn_call_service"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/card_gradient_blue"
+                android:src="@android:drawable/ic_menu_call"
+                android:tint="@color/white"
+                android:contentDescription="Call Service"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

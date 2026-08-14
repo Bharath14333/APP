@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core Brand Colors -->
+    <color name="emergency_red">#D32F2F</color>
+    <color name="emergency_red_light">#FFCDD2</color>
+    <color name="emergency_red_dark">#9A0007</color>
+    
+    <color name="security_blue">#1976D2</color>
+    <color name="security_blue_light">#BBDEFB</color>
+    <color name="security_blue_dark">#004BA0</color>
+
+    <!-- Material Design 3 Palette (Light Theme Defaults) -->
+    <color name="primary">#D32F2F</color>
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="primaryContainer">#FFCDD2</color>
+    <color name="onPrimaryContainer">#3D0000</color>
+    
+    <color name="secondary">#1976D2</color>
+    <color name="onSecondary">#FFFFFF</color>
+    <color name="secondaryContainer">#BBDEFB</color>
+    <color name="onSecondaryContainer">#001D3D</color>
+
+    <color name="background">#FAFAFA</color>
+    <color name="onBackground">#1A1A1A</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="onSurface">#1A1A1A</color>
+    <color name="surfaceVariant">#F5F5F5</color>
+    <color name="onSurfaceVariant">#424242</color>
+    
+    <!-- Severity Levels -->
+    <color name="severity_low">#4CAF50</color>
+    <color name="severity_medium">#FF9800</color>
+    <color name="severity_high">#E65100</color>
+    <color name="severity_critical">#D50000</color>
+
+    <!-- Status Colors -->
+    <color name="status_pending">#FFB300</color>
+    <color name="status_approved">#1E88E5</color>
+    <color name="status_rejected">#E53935</color>
+    <color name="status_resolved">#43A047</color>
+    
+    <!-- Neutral Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dark_gray">#212121</color>
+    <color name="medium_gray">#757575</color>
+    <color name="light_gray">#E0E0E0</color>
+</resources>

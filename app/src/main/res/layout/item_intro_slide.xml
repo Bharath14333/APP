@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:background="@color/background">
+
+    <ImageView
+        android:id="@+id/img_slide_icon"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@android:drawable/ic_dialog_alert"
+        android:tint="@color/emergency_red"
+        android:background="@drawable/card_gradient_blue"
+        android:padding="32dp"
+        android:contentDescription="Slide Icon" />
+
+    <TextView
+        android:id="@+id/txt_slide_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Real-time Crisis Notification"
+        android:textColor="@color/onBackground"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_slide_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Get instant updates about ongoing natural disasters and road accidents around your area."
+        android:textColor="@color/medium_gray"
+        android:textSize="16sp" />
+
+</LinearLayout>

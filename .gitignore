@@ -1,0 +1,19 @@
+# Gradle files
+.gradle/
+build/
+
+# Android Studio / IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Python temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local configuration
+local.properties
+.DS_Store

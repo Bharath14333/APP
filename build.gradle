@@ -1,0 +1,19 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Android Gradle Plugin compatible with modern Gradle
+        classpath 'com.android.tools.build:gradle:8.13.2'
+        // Google Services Plugin for Firebase
+        classpath 'com.google.gms:google-services:4.4.1'
+    }
+}
+
+// allprojects block removed because repositories are managed in settings.gradle (dependencyResolutionManagement)
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            app:title="Volunteer Sign Up"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@android:drawable/ic_menu_revert"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Join the CrisisSense Rescue Squad"
+                android:textColor="@color/onBackground"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Volunteers are mobilized to support nearby first responders during high severity incidents."
+                android:textColor="@color/medium_gray"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Select Your Skills &amp; Training"
+                android:textColor="@color/onBackground"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/check_first_aid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="First Aid / CPR Certification"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/check_rescue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Search and Rescue Training"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/check_logistics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Logistics / Driving Support"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/check_crisis_comm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Crisis Communications"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Availability Details"
+                android:textColor="@color/onBackground"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edit_availability"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="e.g. Available evenings, weekends, on-call alert basis."
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textColor="@color/onBackground"
+                android:textColorHint="@color/medium_gray"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/btn_submit_volunteer"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/button_rounded_primary"
+                android:text="Submit Volunteer Form"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
