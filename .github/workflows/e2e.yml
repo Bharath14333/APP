@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  PYTHONPATH: .
+
 permissions:
   contents: read
   pages: write
@@ -19,8 +22,8 @@ jobs:
     name: "🌐 Selenium — Website Tests (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -30,7 +33,7 @@ jobs:
           python -m pytest automation/tests/test_suite.py || true
           python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Selenium Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: selenium_reports
           path: |
@@ -42,8 +45,8 @@ jobs:
     name: "📱 Appium — Android Tests (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -51,7 +54,7 @@ jobs:
       - name: Run Appium Tests
         run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Appium Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: appium_reports
           path: Test Results/Excel/Appium_Test_Report.xlsx
@@ -60,8 +63,8 @@ jobs:
     name: "🧪 Unit Tests — API (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -69,7 +72,7 @@ jobs:
       - name: Run Unit Tests
         run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Unit Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: unit_reports
           path: Test Results/Excel/Unit_Test_Report.xlsx
@@ -78,8 +81,8 @@ jobs:
     name: "✅ Validation Tests (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -87,7 +90,7 @@ jobs:
       - name: Run Validation Tests
         run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Validation Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: validation_reports
           path: Test Results/Excel/Validation_Test_Report.xlsx
@@ -96,8 +99,8 @@ jobs:
     name: "🚀 Deployment Status (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -105,7 +108,7 @@ jobs:
       - name: Run Deployment Verification
         run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Deployment Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: deployment_reports
           path: Test Results/Excel/Deploy_Test_Report.xlsx
@@ -114,8 +117,8 @@ jobs:
     name: "📈 Load Testing — Performance (300)"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
@@ -123,7 +126,7 @@ jobs:
       - name: Run Load Performance Tests
         run: python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
       - name: Upload Load Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: load_reports
           path: Test Results/Excel/Load_Test_Report.xlsx
@@ -133,15 +136,15 @@ jobs:
     needs: [selenium, appium, unit, validation, deployment, load]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install openpyxl
       
       - name: Download all Excel reports
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: downloaded_reports
 
@@ -169,7 +172,7 @@ jobs:
         uses: actions/deploy-pages@v2
 
       - name: Upload Consolidated E2E Excel Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Consolidated_Test_Excel_Reports
           path: Test Results/Excel/
