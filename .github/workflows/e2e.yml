@@ -163,13 +163,13 @@ jobs:
           python -c "from automation.utils.report_generator import generate_multi_reports; generate_multi_reports()"
 
       - name: Setup GitHub Pages Configuration
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5
       - name: Upload Pages HTML Artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: './web'
+          path: 'Test Results/HTML'
       - name: Deploy static dashboard to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
       - name: Upload Consolidated E2E Excel Artifacts
         uses: actions/upload-artifact@v4

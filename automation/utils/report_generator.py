@@ -582,6 +582,10 @@ def generate_multi_reports():
     with open(os.path.join(html_dir, "execution-report.html"), "w", encoding="utf-8") as f:
         f.write(html_dashboard)
 
+    # Also generate index.html for GitHub Pages root
+    with open(os.path.join(html_dir, "index.html"), "w", encoding="utf-8") as f:
+        f.write(html_dashboard)
+
     print("Successfully generated all multi-suite quality documents and Excel reports!")
 
 if __name__ == "__main__":
