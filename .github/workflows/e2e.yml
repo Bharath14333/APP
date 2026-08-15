@@ -164,6 +164,8 @@ jobs:
 
       - name: Setup GitHub Pages Configuration
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Upload Pages HTML Artifact
         uses: actions/upload-pages-artifact@v3
         with:
